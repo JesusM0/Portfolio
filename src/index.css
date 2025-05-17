@@ -1,1 +1,9 @@
 @import "tailwindcss";
+:root {
+  color: #ffff;
+}
+html,
+body {
+  overflow: hidden;
+  height: 100vh;
+}

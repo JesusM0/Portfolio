@@ -1,36 +1,25 @@
 import { useLocation } from "react-router-dom";
-import type { ReactNode } from "react";
-import { SideBar } from "../components/SideBar";
 import { TopNavBar } from "../components/TopNavBar";
+import { AnimatePresence } from "framer-motion";
+import type { ReactNode } from "react";
 
-interface LayoutProps {
+type LayoutProps = {
   children: ReactNode;
-}
+};
 
-//This Layout is meant to determine what page youre one
 export default function Layout({ children }: LayoutProps) {
-  //using useLocation from react-router
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  //if the page is home, we use the side bar(really just split page) setting where the navigation item
-  //will be on the left and content on the righ
-  if (isHome) {
-    return (
-      <div className="flex min-h-screen">
-        <div className="w-1/2 bg-background p-8 hidden lg:block">
-          <SideBar />
-        </div>
-        <div className="w-full lg:w-2/3 p-10">{children}</div>
-      </div>
-    );
-  }
-
-  //any other page type will have a nav bar on top.
   return (
-    <div className="min-h-screen bg-background">
-      <TopNavBar />
-      <main className="w-full lg:w-2/3 p-10">{children}</main>
+    <div className="relative min-h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+      {/* Navbar transition */}
+      <div className="fixed top-0 left-0 w-full h-24 z-40">
+        <AnimatePresence>{!isHome && <TopNavBar />}</AnimatePresence>
+      </div>
+
+      {/* Prevent being pushed down by navbar*/}
+      <main className="w-full px-10 pt-0">{children}</main>
     </div>
   );
 }

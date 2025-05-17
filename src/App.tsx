@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const location = useLocation();
@@ -11,12 +12,14 @@ function App() {
     <>
       {/* routes for each page. Surrounded by Layout to apply appropriate structure and styling */}
       <Layout>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </AnimatePresence>
       </Layout>
     </>
   );
