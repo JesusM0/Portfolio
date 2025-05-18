@@ -5,6 +5,7 @@ import { BsGithub, BsLinkedin, BsInstagram } from "react-icons/bs";
 import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { GoDownload } from "react-icons/go";
 
 gsap.registerPlugin(SplitText, ScrambleTextPlugin);
 
@@ -83,7 +84,7 @@ export default function Home() {
     { name: "Projects", to: "/projects" },
   ];
   return (
-    <div className="relative h-screen w-full bg-neutral-950 overflow-hidden px-4">
+    <div className="relative h-screen w-full overflow-hidden px-4">
       {/* Hero Section */}
       <div className="h-full flex flex-col justify-center items-start max-w-4xl mx-auto gap-6 right-content">
         {/* Scramble Text Line */}
@@ -123,20 +124,26 @@ export default function Home() {
         <motion.p
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="text-gray-400 max-w-lg text-xl"
+          className="text-gray-400 max-w-lg text-xl font-mono"
         >
           {" "}
           <span
             ref={textRef}
             className="inline-block text-green-400 min-w-[10ch]"
-          ></span>
-          <p> </p>
+          ></span>{" "}
+          <br />
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
           veritatis minima fugit distinctio placeat. Animi, ab ea aspernatur
           expedita itaque laudantium aliquam quia voluptatibus veniam adipisci
           quod numquam in. Nobis.
         </motion.p>
-        <div className="flex flex-col gap-4 mt-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col gap-4 mt-10"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -150,12 +157,19 @@ export default function Home() {
               {link.name}
             </Link>
           ))}
-        </div>
-        <div className="flex gap-6 text-gray-400 text-2xl pt-6">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="flex gap-6 text-gray-400 text-2xl pt-6"
+        >
           <a
             href="https://github.com/JesusM0"
             target="_blank"
             rel="noreferrer"
+            title="GitHub"
             className="hover:text-violet-500"
           >
             <BsGithub />
@@ -164,6 +178,7 @@ export default function Home() {
             href="https://www.linkedin.com/in/jesus-m0lina/"
             target="_blank"
             rel="noreferrer"
+            title="Lets Connect on LinkedIn"
             className="hover:text-blue-500"
           >
             <BsLinkedin />
@@ -172,6 +187,7 @@ export default function Home() {
             href="https://www.instagram.com/_chuycho_/"
             target="_blank"
             rel="noreferrer"
+            title="Instagram"
             className="hover:text-pink-400"
           >
             <BsInstagram />
@@ -180,11 +196,21 @@ export default function Home() {
             href="https://leetcode.com/u/Kos-MosV2/"
             target="_blank"
             rel="noreferrer"
+            title="Compare Our Stats on LeetCode!"
             className="hover:text-yellow-400"
           >
             <SiLeetcode />
           </a>
-        </div>
+          <a
+            href="/Jesus_Molina_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            title="Checkout Out My Resume"
+            className="hover:text-yellow-400"
+          >
+            <GoDownload />
+          </a>
+        </motion.div>
       </div>
     </div>
   );
