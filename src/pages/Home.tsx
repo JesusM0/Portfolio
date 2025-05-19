@@ -124,7 +124,7 @@ export default function Home() {
         <motion.p
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="text-gray-400 max-w-lg text-xl font-mono"
+          className="text-gray-400 max-w-lg text-2x1 font-mono"
         >
           {" "}
           <span
@@ -132,17 +132,19 @@ export default function Home() {
             className="inline-block text-green-400 min-w-[10ch]"
           ></span>{" "}
           <br />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-          veritatis minima fugit distinctio placeat. Animi, ab ea aspernatur
-          expedita itaque laudantium aliquam quia voluptatibus veniam adipisci
-          quod numquam in. Nobis.
+          Hi! Im Jesus Molina, a full-stack developer powered by curiosty,
+          determination, and the occasional Watermelon Arizona. I have a deep
+          love for backend systems but I am always eager to connect the
+          front-end and back-end together! My mission? To build meaningful
+          software that makes a difference and to leave a mark on the
+          technological world.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1 }}
-          className="flex flex-col gap-4 mt-10"
+          className="flex flex-col gap-4 mt-5"
         >
           {navLinks.map((link) => (
             <Link
